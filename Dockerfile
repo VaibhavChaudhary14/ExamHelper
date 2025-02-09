@@ -1,5 +1,5 @@
 # Use Python 3.10+ (instead of 3.9)
-FROM python:3.11
+FROM python:3.12.1
 
 # Set the working directory
 WORKDIR /app
