@@ -1,11 +1,14 @@
-# Use official Python image
-FROM python:3.9
+# Use Python 3.10+ (instead of 3.9)
+FROM python:3.11
 
-# Set the working directory inside the container
+# Set the working directory
 WORKDIR /app
 
-# Copy all project files into the container
+# Copy all project files
 COPY . .
+
+# Upgrade pip before installing dependencies
+RUN pip install --upgrade pip
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
@@ -13,5 +16,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Expose the port Streamlit runs on
 EXPOSE 8501
 
-# Command to run the Streamlit app
+# Start the Streamlit app
 CMD ["streamlit", "run", "main.py", "--server.port=8501", "--server.address=0.0.0.0"]
